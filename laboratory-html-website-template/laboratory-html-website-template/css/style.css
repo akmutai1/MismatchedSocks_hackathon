@@ -238,6 +238,12 @@
 
 
 /*** Features ***/
+
+/* Login card tweaks */
+.card-body h3 { font-family: 'Red Rose', serif; font-weight: 600; }
+.card { border: none; }
+.card .form-control { height: 48px; }
+.card .btn-primary { padding: 12px 20px; font-weight: 600; }
 .feature {
     background: linear-gradient(rgba(3, 27, 78, .3), rgba(3, 27, 78, .3)), url(../img/feature.jpg) left center no-repeat;
     background-size: cover;
