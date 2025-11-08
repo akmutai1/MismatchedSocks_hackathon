@@ -4,8 +4,22 @@
 
     // Demo credential (in production use server-side auth)
     const DEMO_USER = { email: 'adams.tebes@gmail.com', password: 'soccerkid098', name: 'Adams Tebes' };
-    const STORAGE_KEY = 'labsky_user';
-    const ACCOUNTS_KEY = 'labsky_accounts';
+    const OLD_STORAGE_KEY = 'medsocks_user';
+    const OLD_ACCOUNTS_KEY = 'medsocks_accounts';
+    const STORAGE_KEY = 'medsocks_user';
+    const ACCOUNTS_KEY = 'medsocks_accounts';
+
+    // migrate old keys to new keys if present
+    (function migrateOldStorage() {
+        try {
+            if (!localStorage.getItem(STORAGE_KEY) && localStorage.getItem(OLD_STORAGE_KEY)) {
+                localStorage.setItem(STORAGE_KEY, localStorage.getItem(OLD_STORAGE_KEY));
+            }
+            if (!localStorage.getItem(ACCOUNTS_KEY) && localStorage.getItem(OLD_ACCOUNTS_KEY)) {
+                localStorage.setItem(ACCOUNTS_KEY, localStorage.getItem(OLD_ACCOUNTS_KEY));
+            }
+        } catch (e) { /* ignore */ }
+    })();
 
     // Accounts stored as array [{ email, password, name }]
     function getAccounts() {
